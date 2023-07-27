@@ -23,3 +23,15 @@ export const deleteNote = function (id) {
   const newNotes = state.notes.filter((note) => note.id !== +id);
   state.notes = newNotes;
 };
+
+export const getNote = function (id) {
+  return state.notes.find((note) => note.id === +id);
+};
+
+export const updateNote = function (id, content) {
+  // 1) Delete note
+  deleteNote(id);
+
+  // 2) Add note
+  addNote(content);
+};

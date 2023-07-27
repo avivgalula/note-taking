@@ -1,7 +1,6 @@
 import * as model from "./model.js";
 import formView from "./views/formView.js";
 import notesView from "./views/notesView.js";
-import notePreviewView from "./views/notePreviewView.js";
 
 const controlForm = function () {
   // 1) Get note content from formView
@@ -15,7 +14,7 @@ const controlForm = function () {
   notesView.render(model.state.notes);
 };
 
-const controlNoteDelete = function (id) {
+const controlDeleteNote = function (id) {
   // 1) Delete note from the state
   model.deleteNote(id);
 
@@ -25,7 +24,7 @@ const controlNoteDelete = function (id) {
 
 const init = () => {
   formView.addHandlerSubmit(controlForm);
-  notePreviewView.addHandlerDelete(controlNoteDelete);
+  notesView.addHandlerDelete(controlDeleteNote);
 };
 
 init();

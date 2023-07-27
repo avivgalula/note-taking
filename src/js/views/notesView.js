@@ -13,6 +13,23 @@ class notesView {
     this._parentElmenent.innerHTML = "";
   }
 
+  addHandlerDelete(handler) {
+    this._parentElmenent.addEventListener("click", (e) => {
+      const note = e.target.closest(".note-preview");
+      const btn = e.target.closest(".note-preview-trash-btn");
+      if (!btn) return;
+      handler(note.dataset.id);
+    });
+  }
+
+  addHandlerOpen(handler) {
+    this._parentElmenent.addEventListener("click", (e) => {
+      const note = e.target.closest(".note-preview");
+      if (!note) return;
+      handler(note.dataset.id);
+    });
+  }
+
   _generateMarkup() {
     return this._data.map(this._generateMarkupNote).join("");
   }
@@ -20,7 +37,7 @@ class notesView {
   _generateMarkupNote(note) {
     return `
         <div class="note-preview" data-id="${note.id}">
-          <div class="note-preview-crown"></div>
+          <div class="note-crown"></div>
 
           <div class="note-preview-header">
             <span class="note-preview-data">${note.date}</span>
