@@ -9,7 +9,7 @@ body {
   background-color: #ecf6ff;
   display: flex;
   justify-content: center;
-  height: 100vh;
+  /* height: 100vh; */
   margin-top: 7rem;
 }
 

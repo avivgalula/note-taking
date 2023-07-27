@@ -1,4 +1,13 @@
+.modal-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
 .note-modal {
+  position: absolute;
   background-color: #dfe6ff;
   width: 50vw;
   height: 40rem;
@@ -9,6 +18,12 @@
   transform: translate(-50%, -50%);
   overflow-y: hidden;
   border: 0;
+  box-shadow: 0 0 22px 1px #8e8e8e4a;
+}
+
+.note-modal-btns {
+  display: flex;
+  gap: 1rem;
 }
 
 .note-modal-header {
@@ -17,6 +32,23 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+}
+
+.note-modal-close-btn {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.note-modal-close-icon {
+  width: 24px;
+  height: 24px;
+  color: #bababa94;
+  transition: color 0.2s ease-in-out;
+}
+
+.note-modal-close-icon:hover {
+  color: #000;
 }
 
 .note-modal-trash-btn {
@@ -56,4 +88,15 @@
   border-radius: 1rem;
   box-shadow: inset 0 0 10px 10px #312d4f;
   border: solid 5px transparent;
+}
+
+.overlay {
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+}
+
+.hide {
+  display: none;
 }
