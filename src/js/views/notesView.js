@@ -25,7 +25,9 @@ class notesView {
   addHandlerOpen(handler) {
     this._parentElmenent.addEventListener("click", (e) => {
       const note = e.target.closest(".note-preview");
+      const btn = e.target.closest(".note-preview-trash-btn");
       if (!note) return;
+      if (btn) return;
       handler(note.dataset.id);
     });
   }

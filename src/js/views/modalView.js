@@ -40,7 +40,6 @@ class modalView {
     const overlay = document.querySelector(".overlay");
     overlay.addEventListener("click", (e) => {
       const overlayDimensions = overlay.getBoundingClientRect();
-      console.log(overlayDimensions);
       if (
         e.clientX > overlayDimensions.left ||
         e.clientX < overlayDimensions.right ||
@@ -57,8 +56,16 @@ class modalView {
       const note = e.target.closest(".note-modal");
       const btn = e.target.closest(".note-modal-trash-btn");
       if (!btn) return;
+
       handler(note.dataset.id);
       this._clear();
+    });
+  }
+
+  addHandlerUpdate(handler) {
+    const textarea = this._parentElmenent.querySelector("textarea");
+    textarea.addEventListener("input", () => {
+      handler(this._data.id, textarea.value);
     });
   }
 

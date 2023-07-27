@@ -23,7 +23,7 @@ const controlDeleteNote = function (id) {
   notesView.render(model.state.notes);
 };
 
-const controlOpenModal = function (id) {
+const controlModal = function (id) {
   // 1) Get clicked note
   const note = model.getNote(id);
 
@@ -32,12 +32,22 @@ const controlOpenModal = function (id) {
 
   // 3) Add handlers
   modalView.addHandlerClose();
+  modalView.addHandlerUpdate(controlUpdate);
+};
+
+const controlUpdate = function (id, content) {
+  // 1) Update modal state
+  model.updateNote(id, content);
+
+  // 2) Render notes
+  notesView.render(model.state.notes);
 };
 
 const init = () => {
+  notesView.render(model.state.notes);
   formView.addHandlerSubmit(controlForm);
   notesView.addHandlerDelete(controlDeleteNote);
-  notesView.addHandlerOpen(controlOpenModal);
+  notesView.addHandlerOpen(controlModal);
   modalView.addHandlerDelete(controlDeleteNote);
 };
 
