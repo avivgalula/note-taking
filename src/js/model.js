@@ -18,8 +18,6 @@ export const addNote = function (content) {
     date: getCurrDate(),
   };
 
-  console.log(newNote);
-
   state.notes = [newNote, ...state.notes];
 
   setLocalStorage();
